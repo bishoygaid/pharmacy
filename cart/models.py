@@ -5,9 +5,6 @@ from patients.models import Patient
 
 
 class Cart(models.Model):
-    medicine = models.ForeignKey(
-        Medicine, related_name='medicines', on_delete=models.CASCADE
-    )
     doctor = models.ForeignKey(
         Doctor, related_name='doctors', on_delete=models.CASCADE
     )
@@ -15,4 +12,4 @@ class Cart(models.Model):
         Patient, related_name='patients', on_delete=models.CASCADE
     )
     medecines = models.ManyToManyField(Medicine, blank=True)
-
+    summry = models.TextField(blank=True, null=True)

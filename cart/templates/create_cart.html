@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+
+
+{% block title %}Create Cart{% endblock %}
+
+{% block content %}
+
+<form class="" method="POST" action="." style="margin-top: 300px; margin-bottom: 100px">
+    {% csrf_token %}
+    {% bootstrap_form patient_form %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button class="btn btn-success " type="submit">Submit</button>
+    {% endbuttons %}
+
+</form>
+
+{% endblock %}

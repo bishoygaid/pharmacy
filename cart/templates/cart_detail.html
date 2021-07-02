@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+  <link href="{% static 'report.css' %}" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" >
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+
+</head>
+<body>
+    <div class="container mt-5 mb-5">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10">
+                <div class="receipt bg-white p-3 rounded"><h1 class="title">Smart Pharmacy</h1>
+                    <h4 class="mt-2 mb-3">Your medicine request is confirmed!</h4>
+                    <h6 class="name">Doctor Name: {{cart.doctor.user.username}}</h6>
+                    <h6 class="name">Doctor Phone {{cart.doctor.phone}}</h6>
+                    <h6 class="name">Patient Name: {{cart.patient.full_name}}</h6>
+                    <h6 class="name">Patient Phone: {{cart.patient.phone}}</h6>
+                    <hr>
+                    <div class="d-flex flex-row justify-content-between align-items-center order-details">
+                        <div><span class="d-block fs-12">Go to nearest pharmacy to request these medicines.</div>
+                    </div>
+                    <hr>
+                    {% for medecine in medecines %}
+                        <div class="d-flex justify-content-between align-items-center product-details">
+                            <div class="d-flex flex-row product-name-image">
+                                <div class="d-flex flex-column justify-content-between ml-2">
+                                    <div><span class="d-block font-weight-bold p-name">{{medecine.name}}</span><span class="fs-12">Code: {{medecine.code}}</span></div>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h5>{{medecine.price}} EGP</h5>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="d-flex justify-content-between align-items-center product-details">
+                            <p>No medicines</p>
+                        </div>
+                    {% endfor %}
+
+                    <div class="mt-5 amount row">
+                        <div class="d-flex justify-content-center col-md-6"><img src="https://i.imgur.com/AXdWCWr.gif" width="250" height="100"></div>
+                        <div class="col-md-6">
+                            <div class="billing">
+                                <div class="d-flex justify-content-between mt-2"><span class="text-success">Discount</span><span class="font-weight-bold text-success">0 EGP</span></div>
+                                <hr>
+                                <div class="d-flex justify-content-between mt-1"><span class="font-weight-bold text-success">Total Price</span>
+                                    <span class="font-weight-bold text-success">{% if total_price %} {{total_price}} {% else %} 0 {% endif %}</span></div>
+                            </div>
+                        </div>
+                    </div><span class="d-block"></span><span class="font-weight-bold text-success"></span><span class="d-block mt-3 text-black-50 fs-15">Thank you for your visit!</span>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center footer">
+                        <div class="thanks"><span class="d-block font-weight-bold">Thanks for you</span><span>Smart Pharmacy Team</span></div>
+                        <div class="d-flex flex-column justify-content-end align-items-end"><span class="d-block font-weight-bold">Need Help?</span><span>Call - 974493933</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" rel="stylesheet" >
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet" >
+</body>
+</html>

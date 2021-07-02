@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+
+<form class="" id="signup_form" method="post" action="{% url 'account_signup' %}" style="margin-top: 300px; margin-bottom: 100px">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+  <button type="submit" class="btn btn-success">Sign Up &raquo;</button>
+  {% endbuttons %}
+    <p>Already have an account? Then please <a href="{{ login_url }}">sign in</a>.</p>
+
+</form>
+
+
+{% endblock %}

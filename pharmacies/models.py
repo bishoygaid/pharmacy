@@ -25,4 +25,8 @@ class Medicine(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)
     code = models.CharField(max_length=200, blank=True, null=True)
     price = models.FloatField(default=0)
+    # photo = models.ImageField(upload_to="/medicine/images/", blank=True, null=True)
     expire_date = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
